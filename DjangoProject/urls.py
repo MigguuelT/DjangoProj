@@ -23,5 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('MatrizCRUD.urls')),
     path('contato/', include('contato_app.urls')),
+    path('usuarios/', include('usuarios.urls')),
 
 ]

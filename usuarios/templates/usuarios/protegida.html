@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protegida</title>
+</head>
+<body>
+
+    <h2>Página Protegida</h2>
+    <p>Olá, {{ request.user.username }}!</p>
+    <p><a href="{% url 'usuarios:logout' %}">Sair</a></p>
+
+</body>
+</html>
