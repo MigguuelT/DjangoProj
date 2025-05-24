@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "MatrizCRUD",
     "contato_app",
     "usuarios",
+    "pessoas",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

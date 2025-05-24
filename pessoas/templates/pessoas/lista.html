@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+   {% extends 'base.html' %} {# Estende o template base para herdar a estrutura e estilos #}
+
+{% block title %}Lista de Pessoas{% endblock %}
+
+{% block content %}
+<div class="bg-blue-100 shadow-md rounded-lg p-6 mb-6">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Lista de Pessoas</h1>
+
+    <div class="flex justify-center mb-6"> {# Adicionado este div para centralizar #}
+        <a href="{% url 'pessoas_html:adicionar_pessoa' %}"
+           class="inline-block bg-indigo-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out shadow-lg
+                  hover:bg-indigo-900"> {# Alterado de hover:bg-indigo-700 para hover:bg-indigo-800 para uma mudança mais visível #}
+            Adicionar Nova Pessoa
+        </a>
+    </div>
+
+    {% if page_obj %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white rounded-lg shadow-md">
+                <thead class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+                    <tr>
+                        <th class="py-3 px-6 text-left">Nome</th>
+                        <th class="py-3 px-6 text-left">Idade</th>
+                        <th class="py-3 px-6 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    {% for pessoa in page_obj %}
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">{{ pessoa.nome }}</td>
+                            <td class="py-3 px-6 text-left">{{ pessoa.idade }}</td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center space-x-2">
+                                    <a href="{% url 'pessoas_html:editar_pessoa' pessoa.pk %}"
+                                       class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded-md text-xs transition duration-300 ease-in-out">
+                                        Editar
+                                    </a>
+                                    <a href="{% url 'pessoas_html:deletar_pessoa' pessoa.pk %}"
+                                       class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-md text-xs transition duration-300 ease-in-out">
+                                        Deletar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-center mt-6 space-x-2">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"
+                   class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l-md transition duration-300 ease-in-out">
+                    Anterior
+                </a>
+            {% endif %}
+
+            <span class="py-2 px-4 bg-gray-200 text-gray-800 rounded-md">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"
+                   class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r-md transition duration-300 ease-in-out">
+                    Próxima
+                </a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="text-gray-600 text-center py-4">Nenhuma pessoa encontrada.</p>
+    {% endif %}
+</div>
+
+    <div class="text-blue-400 text-center py-4 ">
+        <p>
+            <a href="{% url 'home' %}">Ir para a página inicial</a>
+        </p>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

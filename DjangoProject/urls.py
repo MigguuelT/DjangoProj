@@ -24,5 +24,8 @@ urlpatterns = [
     path('', include('MatrizCRUD.urls')),
     path('contato/', include('contato_app.urls')),
     path('usuarios/', include('usuarios.urls')),
+    path('api/', include('pessoas.urls')), # <--- Mudei o prefixo para 'api/' para DRF
+    path('pessoas/', include('pessoas.urls_html')), # <--- Adicionei uma nova inclusão para as views HTML
+
 
 ]
