@@ -7,51 +7,62 @@
 <body>
 
 {% extends 'base.html' %}
+{% load widget_tweaks %} {# Adicione esta linha para carregar o widget_tweaks #}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="bg-white shadow-md rounded-lg p-6 mb-6">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">{{ title }}</h1>
+{# O div principal agora ocupa a largura total para que o fundo se estenda #}
+<div class="w-full bg-white shadow-md rounded-lg p-6 mb-6">
+    {# Este div interno centraliza o conteúdo e aplica padding horizontal #}
+    <div class="max-w-xl mx-auto px-6 py-8"> {# max-w-xl é um bom tamanho para formulários #}
 
-    <form method="post" class="space-y-4">
-        {% csrf_token %} {# Token de segurança obrigatório para formulários Django #}
+        {# Título centralizado #}
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">{{ title }}</h1>
 
-        {% for field in form %}
-            <div class="mb-4">
-                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
-                    {{ field.label }}
-                </label>
-                {{ field }} {# Renderiza o campo HTML com os widgets definidos no forms.py #}
-                {% if field.help_text %}
-                    <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p class="mt-1 text-sm text-red-600">{{ error }}</p>
-                {% endfor %}
+        <form method="post" class="space-y-4">
+            {% csrf_token %} {# Token de segurança obrigatório para formulários Django #}
+
+            {% for field in form %}
+                <div class="mb-4">
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                        {{ field.label }}
+                    </label>
+                    {# Estilização dos campos de input para evidenciá-los #}
+                    {{ field|add_class:"mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white text-gray-900" }}
+                    {# As classes acima garantem fundo branco, borda, padding, arredondamento e foco #}
+
+                    {% if field.help_text %}
+                        <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+                <div class="text-red-600 text-sm mb-4">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {# Botões de ação, centralizados e com espaçamento #}
+            <div class="flex justify-center space-x-4 pt-4"> {# Adicionado pt-4 para padding top #}
+                <button type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
+                    Salvar
+                </button>
+                <a href="{% url 'pessoas_html:lista_pessoas' %}"
+                   class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
+                    Cancelar
+                </a>
             </div>
-        {% endfor %}
-
-        {% if form.non_field_errors %}
-            <div class="text-red-600 text-sm mb-4">
-                {% for error in form.non_field_errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-
-        <div class="flex space-x-4">
-            <button type="submit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
-                Salvar
-            </button>
-            <a href="{% url 'pessoas_html:lista_pessoas' %}"
-               class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out">
-                Cancelar
-            </a>
-        </div>
-    </form>
-</div>
+        </form>
+    </div> {# Fecha o div max-w-xl #}
+</div> {# Fecha o div w-full #}
 {% endblock %}
 
 </body>

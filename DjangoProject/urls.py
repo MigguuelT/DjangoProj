@@ -21,11 +21,11 @@ from django.urls import path, include
 urlpatterns = [
 
     path("admin/", admin.site.urls),
-    path('', include('MatrizCRUD.urls')),
+    path('home/', include('MatrizCRUD.urls')),
     path('contato/', include('contato_app.urls')),
     path('usuarios/', include('usuarios.urls')),
     path('api/', include('pessoas.urls')), # <--- Mudei o prefixo para 'api/' para DRF
     path('pessoas/', include('pessoas.urls_html')), # <--- Adicionei uma nova inclusão para as views HTML
-
+    path('', include('Landing_Page.urls')),  # Inclui as URLs da Landing_Page
 
 ]

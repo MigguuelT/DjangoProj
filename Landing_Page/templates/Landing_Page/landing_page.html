@@ -1,0 +1,175 @@
+{% extends 'base.html' %} {# Estende o seu arquivo base.html #}
+{% load static %} {# Carrega tags para lidar com arquivos estáticos, se necessário #}
+
+{% block title %}Sua Landing Page Incrível{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 font-inter text-gray-900">
+    <section class="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <svg class="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 160L48 144C96 128 192 96 288 106.7C384 117 480 171 576 186.7C672 203 768 181 864 160C960 139 1056 117 1152 106.7C1248 96 1344 96 1392 96L1440 96V320H1392C1344 320 1248 320 1152 320C1056 320 960 320 864 320C768 320 672 320 576 320C480 320 384 320 288 320C192 320 96 320 48 320L0 320Z" fill="currentColor"></path>
+            </svg>
+        </div>
+        <div class="w-full px-6 relative z-10 flex flex-col items-center text-center max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-down">
+                Seu Projeto .com, Incrível e Rápido!
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl animate-fade-in-up">
+                Descubra como podemos transformar suas ideias em realidade com uma solução robusta e escalável.
+            </p>
+            <a href="#contact" class="bg-white text-blue-700 hover:bg-blue-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-bounce-in">
+                Comece Agora
+            </a>
+        </div>
+    </section>
+
+    <section id="features" class="py-16 md:py-24 bg-white">
+        <div class="w-full px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Por que escolher nosso projeto?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 mx-auto">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Performance Otimizada</h3>
+                    <p class="text-gray-600 text-center">
+                        Desenvolvemos soluções com foco em velocidade e eficiência, garantindo uma experiência fluida para seus usuários.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-6 mx-auto">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.007 12.007 0 002.944 12c.038 2.238.342 4.404.908 6.456A11.955 11.955 0 0112 21.056a11.955 11.955 0 018.618-3.04A12.007 12.007 0 0021.056 12c-.038-2.238-.342-4.404-.908-6.456z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Segurança Robusta</h3>
+                    <p class="text-gray-600 text-center">
+                        Implementamos as melhores práticas de segurança para proteger seus dados e os de seus clientes.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
+                    <div class="flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-full mb-6 mx-auto">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Escalabilidade Flexível</h3>
+                    <p class="text-gray-600 text-center">
+                        Nosso projeto é construído para crescer com você, adaptando-se às suas necessidades futuras sem problemas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-gray-100">
+        <div class="w-full px-6 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Sobre Nosso Projeto</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Nosso projeto Django é uma solução completa para soluções na rede internet.
+                    Com uma arquitetura moderna e o poder do Python, garantimos um desenvolvimento ágil e resultados de alta qualidade.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    Seja para um e-commerce, um sistema de gestão ou uma aplicação web complexa, nossa expertise em Django
+                    permite construir plataformas robustas, seguras e com excelente performance.
+                </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="{% static 'Landing_Page/images/ background.jpg' %}" alt="Ilustração do Projeto" class="rounded-lg shadow-xl max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 bg-gradient-to-r from-blue-700 to-indigo-800 text-white">
+        <div class="w-full px-6 text-center max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Pronto para começar?</h2>
+            <p class="text-lg mb-12 max-w-3xl mx-auto">
+                Entre em contato conosco hoje mesmo para discutir suas necessidades e descobrir como podemos ajudar a impulsionar seu negócio.
+            </p>
+
+            {% if messages %}
+                <ul class="mb-6">
+                    {% for message in messages %}
+                        <li class="p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-800{% elif message.tags == 'error' %}bg-red-100 text-red-800{% endif %}">
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg text-gray-900">
+                <h3 class="text-2xl font-semibold mb-6">Fale Conosco</h3>
+                <form action="{% url 'landing_page:contact_submit' %}" method="POST" class="space-y-6">
+                    {% csrf_token %} {# Token de segurança obrigatório no Django #}
+                    <div>
+                        <label for="name" class="block text-left text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                        <input type="text" id="name" name="name" required
+                               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                               placeholder="Seu nome">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-left text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required
+                               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                               placeholder="seu.email@exemplo.com">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-left text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" required
+                                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                  placeholder="Sua mensagem..."></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="w-full px-6 text-center max-w-7xl mx-auto">
+            <p>&copy; 2025 Seu Projeto .com. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacidade</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Termos</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<style>
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+        0%, 20%, 40%, 60%, 80%, 100% {
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        0% { opacity: 0; transform: scale3d(.3, .3, .3); }
+        20% { transform: scale3d(1.1, 1.1, 1.1); }
+        40% { transform: scale3d(.9, .9, .9); }
+        60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+        80% { transform: scale3d(.97, .97, .97); }
+        100% { opacity: 1; transform: scale3d(1, 1, 1); }
+    }
+
+    .animate-fade-in-down {
+        animation: fadeInDown 1s ease-out forwards;
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.2s; /* Atraso para aparecer depois do título */
+    }
+    .animate-bounce-in {
+        animation: bounceIn 1s ease-out forwards;
+        animation-delay: 0.4s; /* Atraso para aparecer depois do parágrafo */
+    }
+</style>
+{% endblock %}
