@@ -1,0 +1,33 @@
+<!-- template_landing_page.html -->
+{% extends ‘template_base.html’ %}
+
+{% block title %}Minha Landing Page | {{ produto.titulo }}{% endblock %}
+
+{% block stylesheets %}
+	<!—Aqui estarão os links para arquivos CSS específicos da Landing Page -->
+	<link rel=“stylesheet” href=“styles/landing_page.css”>
+{% endblock %}
+
+{% block content %}
+	<section>
+		<h2>{{ produto.titulo }}</h2>
+		<p>{{ produto.descricao }}</p>
+		<img src=“{{ produto.imagem.url }}” alt=“{{ produto.titulo }}”>
+		<p>Preço: R$ {{ produto.preco }}</p>
+		<!—Aqui estará o formulário de contato -->
+		<form method=“post”>
+			{% csrf_token %}
+			<!-- campos do formulário -->
+			<input type=“text” name=“nome” placeholder=“Nome”>
+			<input type=“email” name=“email” placeholder=“E-mail”>
+			<textarea name=“mensagem” placeholder=“Mensagem”>
+			</textarea>
+			<button type=“submit”>Enviar</button>
+		</form>
+	</section>
+{% endblock %}
+
+{% block scripts %}
+	<!—Aqui estarão os scripts JavaScript específicos da Landing Page -->
+	<script src=“scripts/landing_page.js”></script>
+{% endblock %}
